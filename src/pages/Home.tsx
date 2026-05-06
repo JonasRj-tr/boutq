@@ -587,7 +587,19 @@ export default function Home({ cart, setCart, isCartOpen, setIsCartOpen }: HomeP
                       <h5 className="text-[10px] uppercase tracking-[0.4em] font-bold opacity-30 pb-2 border-b border-brand-green/5">Endereço</h5>
                       <div className="grid grid-cols-2 gap-8">
                         <div className="relative">
-                          <input placeholder="CEP" className="luxury-input" value={customerData.zip} onChange={e => setCustomerData({...customerData, zip: e.target.value})} onBlur={handleZipBlur} />
+                          <input 
+                            placeholder="CEP" 
+                            className="luxury-input" 
+                            value={customerData.zip} 
+                            onChange={e => {
+                              const val = e.target.value.replace(/\D/g, '');
+                              setCustomerData({...customerData, zip: val});
+                              if (val.length === 8) {
+                                handleZipBlur();
+                              }
+                            }} 
+                            onBlur={handleZipBlur} 
+                          />
                         </div>
                         <input placeholder="Cidade" className="luxury-input" value={customerData.city} onChange={e => setCustomerData({...customerData, city: e.target.value})} />
                       </div>
@@ -608,15 +620,25 @@ export default function Home({ cart, setCart, isCartOpen, setIsCartOpen }: HomeP
                         <span className="text-sm italic">{cart.reduce((a,b) => a + b.quantity, 0)} itens</span>
                       </div>
                       <div className="flex justify-between border-b border-white/10 pb-4 text-brand-cream">
+                         <span className="text-[9px] uppercase tracking-[0.3em] opacity-60">Destinatário</span>
+                         <div className="text-right">
+                           <p className="text-xs font-bold">{customerData.name}</p>
+                           <p className="text-[10px] opacity-60">{customerData.phone}</p>
+                         </div>
+                      </div>
+                      <div className="flex justify-between border-b border-white/10 pb-4 text-brand-cream">
                          <span className="text-[9px] uppercase tracking-[0.3em] opacity-60">Entrega</span>
                          <div className="text-right">
                            <p className="text-xs">{customerData.street}, {customerData.number}</p>
-                           <p className="text-[10px] opacity-60">{customerData.city}, {customerData.state}</p>
+                           <p className="text-[10px] opacity-60">{customerData.city}, {customerData.state} - {customerData.zip}</p>
                          </div>
                       </div>
                       <div className="flex justify-between text-brand-cream">
-                        <span className="text-[9px] uppercase tracking-[0.3em] opacity-60">Prazo Estimado</span>
-                        <span className="text-sm font-medium">{shippingInfo.days} dias úteis</span>
+                        <span className="text-[9px] uppercase tracking-[0.3em] opacity-60">Frete Correios</span>
+                        <div className="text-right">
+                          <span className="text-sm font-medium block">{formatCurrency(shippingInfo.price)}</span>
+                          <span className="text-[9px] opacity-60">Entrega em {shippingInfo.days} dias</span>
+                        </div>
                       </div>
                     </div>
 

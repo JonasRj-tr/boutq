@@ -18,7 +18,10 @@ export function formatAddress(address: any) {
 
 export function generateWhatsAppMessage(order: any, storePhone: string) {
   const itemsText = order.items.map((item: any) => 
-    `✅ *${item.quantity}x ${item.name}*\n   Preço: ${formatCurrency(item.price)}\n   Foto: ${item.image}\n`
+    `✅ *${item.quantity}x ${item.name}*\n` +
+    `   Preço Unitário: ${formatCurrency(item.price)}\n` +
+    `   Subtotal Item: ${formatCurrency(item.price * item.quantity)}\n` +
+    `   📸 Ver Foto: ${item.image}\n`
   ).join('\n');
 
   const message = `*🌿 NOVO PEDIDO - BOTANIQ*\n\n` +
@@ -27,13 +30,13 @@ export function generateWhatsAppMessage(order: any, storePhone: string) {
     `📱 *WhatsApp:* ${order.customerPhone}\n\n` +
     `*ENDEREÇO DE ENTREGA*\n` +
     `📍 ${formatAddress(order.address)}\n\n` +
-    `*RESUMO DOS ITENS*\n` +
+    `*ITENS DO PEDIDO*\n` +
     `${itemsText}\n` +
     `--------------------------\n` +
-    `💰 *Subtotal:* ${formatCurrency(order.cartTotal)}\n` +
-    (order.discount > 0 ? `✨ *Desconto (${order.couponCode}):* -${formatCurrency(order.discount)}\n` : '') +
+    `💰 *Subtotal Produtos:* ${formatCurrency(order.cartTotal)}\n` +
+    (order.discount > 0 ? `✨ *Desconto:* -${formatCurrency(order.discount)}\n` : '') +
     `🚚 *Frete (Correios):* ${formatCurrency(order.shippingCost)}\n` +
-    `⭐ *TOTAL:* ${formatCurrency(order.total)}\n\n` +
+    `⭐ *TOTAL DO PEDIDO:* ${formatCurrency(order.total)}\n\n` +
     `_Pedido gerado automaticamente pelo site Botaniq._`;
   
   const finalMessage = encodeURIComponent(message);
