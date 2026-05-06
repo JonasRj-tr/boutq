@@ -3,7 +3,7 @@ import { collection, getDocs, query, where, addDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { Product, CartItem, Settings, MLProduct } from '../types';
 import { motion, AnimatePresence } from 'motion/react';
-import { ShoppingBag, ChevronRight, Star, Truck, ShieldCheck, Heart, X, Plus, Minus, ArrowRight, Smartphone, ExternalLink } from 'lucide-react';
+import { ShoppingBag, ChevronRight, Star, Truck, ShieldCheck, Heart, X, Plus, Minus, ArrowRight, Smartphone, ExternalLink, Search, Sparkles, Clock, Lock, Shield, Award, Zap, User, Stethoscope, MessageCircle, Ear, Flower2, Droplets, Sun, Moon, Feather, Leaf } from 'lucide-react';
 import { cn, formatCurrency } from '../lib/utils';
 import { fetchMLProducts } from '../services/mercadoLivreService';
 
@@ -214,9 +214,11 @@ export default function Home({ cart, setCart, isCartOpen, setIsCartOpen }: HomeP
       {/* Hero Section */}
       <section className="relative h-[85vh] flex items-center overflow-hidden bg-brand-cream">
         <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
-          <div className="text-[20vw] font-bold text-brand-green/5 select-none leading-none tracking-tighter">
-            PURE
-          </div>
+          <img 
+            src="https://i.postimg.cc/d0pWF3k6/Logo-3.png" 
+            alt="Watermark" 
+            className="w-1/2 opacity-[0.03] select-none pointer-events-none grayscale" 
+          />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-12 w-full grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -228,7 +230,7 @@ export default function Home({ cart, setCart, isCartOpen, setIsCartOpen }: HomeP
             <span className="text-[10px] uppercase tracking-[0.6em] mb-8 block opacity-40 font-medium">Handcrafted Botanical Goods</span>
             <h1 className="text-7xl md:text-8xl mb-8 leading-[0.9] text-brand-green">
               A Essência <br />
-              <span className="italic font-normal pl-12 md:pl-20">da Botânica</span>
+              <span className="italic font-normal pl-12 md:pl-20 uppercase tracking-tighter">da BotaniQ</span>
             </h1>
             <p className="text-sm opacity-70 mb-12 max-w-md leading-relaxed font-sans">
               Saboaria artesanal e óleos de banho em barra. Um ritual de luxo e delicadeza para a sua pele, formulado com ingredientes 100% naturais.
@@ -452,6 +454,316 @@ export default function Home({ cart, setCart, isCartOpen, setIsCartOpen }: HomeP
               </div>
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Care Guide Section (Inspired by Manual) */}
+      <section className="py-24 bg-brand-cream/30 border-y border-brand-green/5">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-[10px] uppercase tracking-[0.5em] text-brand-green/60 mb-4 block">Cuidado Especializado</span>
+            <h2 className="text-4xl md:text-5xl font-serif mb-6">Seu Ritual em 3 Passos</h2>
+            <p className="text-brand-green/60 max-w-xl mx-auto text-sm leading-relaxed lowercase">
+              Inspirado na ciência botânica e no autocuidado consciente, criamos um caminho simplificado para você atingir seus objetivos de bem-estar.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-12">
+            {[
+              {
+                step: "01",
+                title: "Identifique sua Necessidade",
+                desc: "Seja para hidratação profunda, relaxamento ou renovação celular, nossos ativos botânicos são selecionados para sua pele.",
+                icon: <Search size={24} />
+              },
+              {
+                step: "02",
+                title: "Ritual Personalizado",
+                desc: "Receba uma combinação exclusiva de sabonetes e óleos artesanais, formulados com pureza 100% orgânica para você.",
+                icon: <Sparkles size={24} />
+              },
+              {
+                step: "03",
+                title: "Acompanhamento Real",
+                desc: "Nossa comunidade oferece suporte contínuo para ajustar seu ritual conforme as estações e necessidades do seu corpo.",
+                icon: <Heart size={24} />
+              }
+            ].map((item, i) => (
+              <div key={i} className="flex flex-col items-center text-center group bg-white/20 p-8 rounded-2xl border border-white/40 shadow-sm hover:shadow-xl transition-all duration-700">
+                <div className="w-16 h-16 rounded-full border border-brand-green/10 flex items-center justify-center mb-6 text-brand-green group-hover:bg-brand-green group-hover:text-white transition-all duration-500">
+                  {item.icon}
+                </div>
+                <span className="text-[10px] font-bold tracking-widest text-brand-green/30 mb-2">{item.step}</span>
+                <h3 className="text-xl font-serif mb-4 text-brand-green">{item.title}</h3>
+                <p className="text-xs leading-relaxed opacity-60 px-4">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-16 text-center">
+            <button 
+              onClick={() => {
+                const el = document.getElementById('ritual-section');
+                el?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="bg-brand-green text-white px-10 py-5 uppercase text-[10px] tracking-[0.3em] hover:bg-brand-green/90 transition-all shadow-xl rounded-full"
+            >
+              Começar meu Ritual agora
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Personalized Therapeutic Soaps Section */}
+      <section id="sabonetes-terapeuticos" className="py-32 bg-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[40vw] h-[40vw] bg-brand-cream/40 rounded-full -mr-[20vw] -mt-[20vw] blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-[30vw] h-[30vw] bg-brand-green/5 rounded-full -ml-[15vw] -mb-[15vw] blur-3xl"></div>
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-24 items-center">
+            <div className="order-2 lg:order-1">
+              <div className="relative">
+                <div className="aspect-[4/5] overflow-hidden rounded-sm shadow-2xl relative z-10">
+                  <img 
+                    src="https://images.unsplash.com/photo-1600857062241-98e5dba7f214?auto=format&fit=crop&q=80&w=1000" 
+                    className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-1000"
+                    alt="Sabonete Artesanal Terapêutico"
+                  />
+                </div>
+                <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-brand-cream border border-brand-green/5 rounded-sm p-8 shadow-xl z-20 flex flex-col justify-center">
+                   <div className="w-10 h-[1px] bg-brand-green mb-4"></div>
+                   <p className="text-[10px] uppercase tracking-[0.3em] font-bold mb-4">Atendimento Humanizado</p>
+                   <p className="text-xs italic leading-relaxed opacity-60">"Cada pele possui uma história. Cada fórmula também."</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="order-1 lg:order-2">
+              <span className="text-[10px] uppercase tracking-[0.6em] text-brand-green/60 mb-6 block font-bold">Exclusividade BotaniQ</span>
+              <h2 className="text-5xl md:text-6xl font-serif mb-8 text-brand-green leading-[1.1]">
+                Seu cuidado começa com uma <br />
+                <span className="italic font-normal">fórmula única.</span>
+              </h2>
+              
+              <div className="space-y-8 mb-12">
+                <p className="text-brand-green/70 text-lg leading-relaxed lowercase">
+                  Entendemos que cada pessoa possui necessidades únicas. Por isso, desenvolvemos sabonetes terapêuticos artesanais criados individualmente para você, após uma avaliação personalizada.
+                </p>
+                
+                <div className="grid grid-cols-2 gap-x-8 gap-y-6">
+                  {[
+                    { icon: <Droplets size={16} />, label: "Pele Sensível" },
+                    { icon: <ShieldCheck size={16} />, label: "Dermatites" },
+                    { icon: <Zap size={16} />, label: "Oleosidade" },
+                    { icon: <Sun size={16} />, label: "Ressecamento" },
+                    { icon: <Moon size={16} />, label: "Relaxamento" },
+                    { icon: <Heart size={16} />, label: "Bem-estar Emocional" },
+                    { icon: <Leaf size={16} />, label: "Rotina Terapêutica" },
+                    { icon: <Feather size={16} />, label: "Cuidados Específicos" }
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3 group">
+                      <div className="w-8 h-8 rounded-full border border-brand-green/10 flex items-center justify-center text-brand-green/40 group-hover:bg-brand-green group-hover:text-white transition-all duration-300">
+                        {item.icon}
+                      </div>
+                      <span className="text-[10px] uppercase tracking-[0.2em] font-medium">{item.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="p-8 bg-brand-cream/50 border border-brand-green/5 rounded-sm mb-12">
+                <p className="text-[10px] uppercase tracking-[0.1em] opacity-40 italic leading-relaxed">
+                  * Nosso objetivo é complementar o seu autocuidado de forma natural e personalizada. Este serviço não substitui orientações ou tratamentos médicos especializados.
+                </p>
+              </div>
+
+              <a 
+                href={`https://wa.me/${storeSettings.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent('Olá! Gostaria de realizar minha avaliação personalizada para um sabonete terapêutico exclusivo.')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-4 bg-brand-green text-white px-12 py-6 uppercase text-[10px] tracking-[0.4em] hover:bg-brand-green/90 transition-all shadow-2xl rounded-full"
+              >
+                <MessageCircle size={18} /> Iniciar Avaliação via WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <div className="mt-40">
+            <div className="text-center mb-24">
+              <h3 className="text-3xl font-serif mb-4">O Caminho para a sua Fórmula</h3>
+              <div className="w-16 h-[1px] bg-brand-green mx-auto opacity-20"></div>
+            </div>
+
+            <div className="grid md:grid-cols-6 gap-8 relative">
+              <div className="absolute top-10 left-0 w-full h-[1px] bg-brand-green/10 hidden lg:block -z-0"></div>
+              {[
+                { icon: <MessageCircle />, title: "Contato", desc: "Primeiro passo via WhatsApp" },
+                { icon: <Ear />, title: "Escuta", desc: "Avaliação da sua pele e rotina" },
+                { icon: <Search />, title: "Análise", desc: "Identificação das necessidades" },
+                { icon: <Sparkles />, title: "Criação", desc: "Desenvolvimento da fórmula" },
+                { icon: <Flower2 />, title: "Produção", desc: "Artesanal e 100% natural" },
+                { icon: <Truck />, title: "Entrega", desc: "Acompanhamento pós-uso" }
+              ].map((step, i) => (
+                <div key={i} className="flex flex-col items-center text-center relative z-10">
+                  <div className="w-20 h-20 bg-white border border-brand-green/10 rounded-full flex items-center justify-center text-brand-green mb-6 shadow-sm hover:border-brand-green transition-all duration-500">
+                    {step.icon}
+                  </div>
+                  <span className="text-[9px] font-bold tracking-widest text-brand-green/30 mb-2">{i + 1}</span>
+                  <h4 className="text-xs uppercase tracking-[0.2em] font-bold mb-2">{step.title}</h4>
+                  <p className="text-[10px] opacity-50 leading-relaxed px-2">{step.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <div className="mt-40 grid md:grid-cols-4 gap-12 py-20 border-y border-brand-green/5">
+             {[
+               { title: "Escuta Individual", desc: "Entendemos seu bem-estar integral." },
+               { title: "Pureza Botânica", desc: "Ervas e extratos selecionados." },
+               { title: "Arte Manual", desc: "Cada barra é moldada com carinho." },
+               { title: "Wellness Circular", desc: "Acompanhamento próximo e real." }
+             ].map((val, i) => (
+               <div key={i} className="text-center">
+                 <h5 className="text-[10px] uppercase tracking-[0.4em] font-bold mb-4">{val.title}</h5>
+                 <p className="text-xs italic opacity-50 leading-relaxed font-serif">{val.desc}</p>
+               </div>
+             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Men's Health Section */}
+      <section id="saude-masculina" className="py-32 bg-[#0a1a15] text-white overflow-hidden relative">
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500/20 via-brand-green to-emerald-500/20"></div>
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-20 items-center mb-32">
+            <div>
+              <span className="text-[10px] uppercase tracking-[0.6em] text-emerald-400 mb-6 block font-bold">Botaniq Health</span>
+              <h2 className="text-5xl md:text-7xl font-serif mb-8 leading-[1.1]">
+                Saúde Masculina <br />
+                <span className="italic font-normal text-emerald-100/80">Moderna e Descomplicada</span>
+              </h2>
+              <p className="text-emerald-100/60 text-lg leading-relaxed mb-10 max-w-xl">
+                Uma plataforma digital criada para oferecer tratamentos modernos, seguros e personalizados, tudo de forma prática, discreta e totalmente online.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <a 
+                  href={`https://wa.me/${storeSettings.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent('Olá! Gostaria de saber mais sobre os tratamentos de saúde masculina.')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-emerald-500 hover:bg-emerald-400 text-white px-10 py-5 uppercase text-[10px] tracking-[0.3em] transition-all shadow-2xl flex items-center gap-3 rounded-sm group"
+                >
+                  Falar com Especialista <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="aspect-square bg-emerald-900/20 border border-emerald-500/10 rounded-full absolute -inset-10 animate-pulse"></div>
+              <div className="relative z-10 aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                <img 
+                  src="https://www.manual.com.br/_next/image?url=https%3A%2F%2Fcdn.manual.co%2Frebrand%2FWEB_BR%2FHomepage%2Fhero-daily-health%402x.jpg&w=1080&q=100" 
+                  className="w-full h-full object-cover opacity-80"
+                  alt="Modern Health Care"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a1a15] via-transparent to-transparent"></div>
+                <div className="absolute bottom-8 left-8 right-8">
+                  <div className="flex items-center gap-4 bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/10">
+                    <div className="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center">
+                      <Shield size={20} />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-widest">Discrição Total</p>
+                      <p className="text-[10px] opacity-60">Sua privacidade é nossa prioridade.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-32">
+            {[
+              { icon: <ShieldCheck className="text-emerald-400" />, title: "Especialistas", text: "Tratamentos desenvolvidos por corpo clínico rigoroso." },
+              { icon: <Lock className="text-emerald-400" />, title: "100% Discreto", text: "Processo totalmente online e entrega sigilosa." },
+              { icon: <Zap className="text-emerald-400" />, title: "Entrega Rápida", text: "Receba em casa com agilidade em todo o Brasil." },
+              { icon: <Award className="text-emerald-400" />, title: "Fórmulas Únicas", text: "Manipuladas por farmácias autorizadas de elite." }
+            ].map((item, i) => (
+              <div key={i} className="bg-white/5 border border-white/5 p-8 hover:bg-white/10 transition-colors group">
+                <div className="mb-6 group-hover:scale-110 transition-transform duration-500">{item.icon}</div>
+                <h3 className="text-sm uppercase tracking-widest font-bold mb-4">{item.title}</h3>
+                <p className="text-xs text-white/50 leading-relaxed">{item.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mb-32">
+            <div className="text-center mb-20">
+              <h2 className="text-4xl font-serif mb-4">Como Funciona</h2>
+              <div className="w-20 h-1 bg-emerald-500 mx-auto rounded-full"></div>
+            </div>
+            <div className="grid md:grid-cols-3 gap-16 relative">
+              <div className="hidden md:block absolute top-1/2 left-0 w-full h-[1px] bg-white/10 -z-0"></div>
+              {[
+                { step: "01", title: "Avaliação Online", icon: <User />, desc: "Questionário rápido e seguro sobre sua saúde e objetivos." },
+                { step: "02", title: "Tratamento", icon: <Stethoscope />, desc: "Fórmulas preparadas de forma personalizada para seu caso." },
+                { step: "03", title: "Suporte Clínico", icon: <Heart />, desc: "Acompanhamento contínuo durante toda a jornada." }
+              ].map((step, i) => (
+                <div key={i} className="relative z-10 flex flex-col items-center text-center">
+                  <div className="w-20 h-20 rounded-full bg-emerald-500 text-white flex items-center justify-center mb-8 shadow-xl shadow-emerald-500/20">
+                    {step.icon}
+                  </div>
+                  <span className="text-[10px] font-bold text-emerald-400 mb-2">{step.step}</span>
+                  <h3 className="text-xl font-serif mb-4">{step.title}</h3>
+                  <p className="text-xs text-white/50 leading-relaxed max-w-[200px]">{step.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-8">
+            <div className="bg-gradient-to-br from-emerald-950 to-[#0a1a15] p-12 rounded-3xl border border-emerald-500/10 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full -mr-32 -mt-32 blur-3xl group-hover:bg-emerald-500/10 transition-colors"></div>
+              <h3 className="text-3xl font-serif mb-6">Queda Capilar</h3>
+              <p className="text-sm text-white/60 mb-8 leading-relaxed">
+                Soluções modernas e cientificamente comprovadas para auxiliar no combate à queda de cabelo masculina. Fortalecimento e crescimento saudável.
+              </p>
+              <ul className="space-y-4 mb-10">
+                {['Resultados Reais', 'Acompanhamento Médico', 'Fórmulas Personalizadas'].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 text-xs text-emerald-400 font-bold uppercase tracking-widest">
+                    <div className="w-1 h-1 bg-emerald-400 rounded-full"></div> {item}
+                  </li>
+                ))}
+              </ul>
+              <a 
+                href={`https://wa.me/${storeSettings.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent('Tenho interesse no tratamento para Queda Capilar.')}`}
+                target="_blank"
+                className="inline-flex items-center gap-3 text-sm border-b border-emerald-500 pb-2 hover:gap-5 transition-all text-emerald-400 font-bold"
+              >
+                Ver Tratamento <ArrowRight size={16} />
+              </a>
+            </div>
+
+            <div className="bg-gradient-to-br from-emerald-900/40 to-[#0a1a15] p-12 rounded-3xl border border-emerald-500/10 relative overflow-hidden group">
+              <h3 className="text-3xl font-serif mb-6">Performance & Bem-Estar</h3>
+              <p className="text-sm text-white/60 mb-8 leading-relaxed">
+                Tratamentos discretos voltados para qualidade de vida masculina. Todo o processo acontece com privacidade total e acompanhamento especializado.
+              </p>
+              <ul className="space-y-4 mb-10">
+                {['Discrição Total', 'Qualidade de Vida', 'Suporte Exclusivo'].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 text-xs text-emerald-400 font-bold uppercase tracking-widest">
+                    <div className="w-1 h-1 bg-emerald-400 rounded-full"></div> {item}
+                  </li>
+                ))}
+              </ul>
+              <a 
+                href={`https://wa.me/${storeSettings.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent('Quero saber mais sobre os tratamentos de Performance e Bem-Estar.')}`}
+                target="_blank"
+                className="inline-flex items-center gap-3 text-sm border-b border-emerald-500 pb-2 hover:gap-5 transition-all text-emerald-400 font-bold"
+              >
+                Saiba Mais <ArrowRight size={16} />
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 

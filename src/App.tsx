@@ -42,7 +42,7 @@ export default function App() {
             </div>
 
             <Link to="/" className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center">
-              <img src="https://i.postimg.cc/d0gfVbYw/Logo-3.png" alt="Botaniq Logo" className="h-20 w-auto object-contain" />
+              <img src="https://i.postimg.cc/d0pWF3k6/Logo-3.png" alt="Botaniq Logo" className="h-28 w-auto object-contain" />
             </Link>
 
             <div className="flex items-center gap-4">
@@ -121,7 +121,7 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-12">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-16">
               <div className="col-span-1 md:col-span-2">
-                <img src="https://i.postimg.cc/d0gfVbYw/Logo-3.png" alt="Botaniq Logo" className="h-24 w-auto object-contain mb-6 -ml-4 grayscale brightness-200" />
+                <img src="https://i.postimg.cc/d0pWF3k6/Logo-3.png" alt="Botaniq Logo" className="h-28 w-auto object-contain mb-6 -ml-4 brightness-200 contrast-125" />
                 <p className="text-sm opacity-60 leading-relaxed max-w-sm font-sans">
                   Saboaria artesanal e óleos de banho em barra. Um ritual de luxo e delicadeza para a sua pele, formulado com ingredientes 100% naturais e amor.
                 </p>
