@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { ShoppingBag, Menu, X, Instagram, Facebook, Smartphone as TikTok, User } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -41,15 +41,15 @@ export default function App() {
               </button>
             </div>
 
-            <a href="/" className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center">
+            <Link to="/" className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center">
               <img src="https://i.postimg.cc/d0gfVbYw/Logo-3.png" alt="Botaniq Logo" className="h-20 w-auto object-contain" />
-            </a>
+            </Link>
 
             <div className="flex items-center gap-4">
               {isAdmin && (
-                <a href="/admin" className="p-2 hover:bg-brand-green/5 transition-colors" title="Admin">
+                <Link to="/admin" className="p-2 hover:bg-brand-green/5 transition-colors" title="Admin">
                   <User size={20} />
-                </a>
+                </Link>
               )}
               <button 
                 onClick={() => setIsCartOpen(true)}
@@ -84,10 +84,10 @@ export default function App() {
               </div>
 
               <div className="flex flex-col gap-8 text-4xl font-serif text-brand-cream">
-                <a href="/" onClick={() => setIsMenuOpen(false)} className="hover:italic hover:pl-4 transition-all">Início</a>
-                <a href="/#produtos" onClick={() => setIsMenuOpen(false)} className="hover:italic hover:pl-4 transition-all">Produtos</a>
-                <a href="/#sobre" onClick={() => setIsMenuOpen(false)} className="hover:italic hover:pl-4 transition-all">Sobre Nós</a>
-                {isAdmin && <a href="/admin" onClick={() => setIsMenuOpen(false)} className="hover:italic hover:pl-4 transition-all">Mesa Admin</a>}
+                <Link to="/" onClick={() => setIsMenuOpen(false)} className="hover:italic hover:pl-4 transition-all">Início</Link>
+                <Link to="/#produtos" onClick={() => setIsMenuOpen(false)} className="hover:italic hover:pl-4 transition-all">Produtos</Link>
+                <Link to="/#sobre" onClick={() => setIsMenuOpen(false)} className="hover:italic hover:pl-4 transition-all">Sobre Nós</Link>
+                {isAdmin && <Link to="/admin" onClick={() => setIsMenuOpen(false)} className="hover:italic hover:pl-4 transition-all">Mesa Admin</Link>}
               </div>
 
               <div className="absolute bottom-12 left-8 right-8 flex justify-between items-end text-brand-cream">
@@ -129,10 +129,10 @@ export default function App() {
               <div>
                 <h4 className="text-[10px] uppercase tracking-[0.4em] mb-8 opacity-40 font-bold text-white">Navegação</h4>
                 <ul className="flex flex-col gap-4 text-xs font-medium uppercase tracking-widest">
-                  <li><a href="/" className="hover:text-brand-terracotta transition-colors">Início</a></li>
-                  <li><a href="/#produtos" className="hover:text-brand-terracotta transition-colors">Produtos</a></li>
-                  <li><a href="/#sobre" className="hover:text-brand-terracotta transition-colors">Nossa História</a></li>
-                  <li><a href="/admin" className="hover:text-brand-terracotta transition-colors opacity-40 hover:opacity-100">Painel Admin</a></li>
+                  <li><Link to="/" className="hover:text-brand-terracotta transition-colors">Início</Link></li>
+                  <li><Link to="/#produtos" className="hover:text-brand-terracotta transition-colors">Produtos</Link></li>
+                  <li><Link to="/#sobre" className="hover:text-brand-terracotta transition-colors">Nossa História</Link></li>
+                  <li><Link to="/admin" className="hover:text-brand-terracotta transition-colors opacity-40 hover:opacity-100">Painel Admin</Link></li>
                 </ul>
               </div>
               <div>
