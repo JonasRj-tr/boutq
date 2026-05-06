@@ -1,0 +1,89 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "A product for sale in the Botaniq store.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "price": { "type": "number" },
+        "image": { "type": "string", "description": "URL of the product image" },
+        "category": { "type": "string" },
+        "stock": { "type": "number" },
+        "active": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "price", "image"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "A customer order.",
+      "type": "object",
+      "properties": {
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "address": {
+          "type": "object",
+          "properties": {
+            "street": { "type": "string" },
+            "number": { "type": "string" },
+            "complement": { "type": "string" },
+            "neighborhood": { "type": "string" },
+            "city": { "type": "string" },
+            "state": { "type": "string" },
+            "zip": { "type": "string" }
+          }
+        },
+        "items": { "type": "array" },
+        "total": { "type": "number" },
+        "shippingCost": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "confirmed", "shipped", "delivered"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Setting": {
+      "title": "Setting",
+      "description": "Global site settings.",
+      "type": "object",
+      "properties": {
+        "instagram": { "type": "string" },
+        "facebook": { "type": "string" },
+        "tiktok": { "type": "string" },
+        "whatsapp": { "type": "string" },
+        "storeAddress": { "type": "string" },
+        "storeCep": { "type": "string" }
+      }
+    },
+    "Coupon": {
+      "title": "Coupon",
+      "description": "A discount coupon code.",
+      "type": "object",
+      "properties": {
+        "code": { "type": "string" },
+        "value": { "type": "number", "description": "Discount amount in R$ or percentage" },
+        "isActive": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["code", "value"]
+    }
+  },
+  "firestore": {
+    "products": {
+      "schema": "Product",
+      "description": "Collection of products."
+    },
+    "orders": {
+      "schema": "Order",
+      "description": "Collection of orders."
+    },
+    "settings": {
+      "schema": "Setting",
+      "description": "Global settings document (id: main)."
+    },
+    "coupons": {
+      "schema": "Coupon",
+      "description": "Collection of discount coupons."
+    }
+  }
+}
