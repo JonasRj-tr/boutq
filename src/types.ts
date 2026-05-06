@@ -53,3 +53,13 @@ export interface Coupon {
   isActive: boolean;
   createdAt: string;
 }
+
+export interface MLProduct {
+  id: string;
+  title: string;
+  price: number;
+  thumbnail: string;
+  permalink: string;
+  condition: string;
+  thumbnail_id?: string;
+}

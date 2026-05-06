@@ -21,6 +21,13 @@
   }
 }
 
+@layer utilities {
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+}
+
 .luxury-card {
   @apply bg-white border border-brand-green/10 rounded-none overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-brand-green/5;
 }

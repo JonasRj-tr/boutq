@@ -18,26 +18,25 @@ export function formatAddress(address: any) {
 
 export function generateWhatsAppMessage(order: any, storePhone: string) {
   const itemsText = order.items.map((item: any) => 
-    `• ${item.quantity}x ${item.name} (${formatCurrency(item.price)})`
+    `✅ *${item.quantity}x ${item.name}*\n   Preço: ${formatCurrency(item.price)}\n   Foto: ${item.image}\n`
   ).join('\n');
 
-  const message = `*NOVO PEDIDO - BOTANIQ*\n\n` +
-    `*Cliente:* ${order.customerName}\n` +
-    `*Telefone:* ${order.customerPhone}\n\n` +
-    `*Itens:* \n${itemsText}\n\n` +
-    `*Endereço:* \n${formatAddress(order.address)}\n\n` +
-    `*Subtotal:* ${formatCurrency(order.cartTotal)}\n` +
-    (order.discount > 0 ? `*Desconto (${order.couponCode}):* -${formatCurrency(order.discount)}\n` : '') +
-    `*Frete:* ${formatCurrency(order.shippingCost)}\n` +
-    `*TOTAL:* ${formatCurrency(order.total)}\n\n` +
-    `_Pedido gerado via site Botaniq._`;
-
-  // Note: Standard WA links don't support direct image attachments, 
-  // but we can provide links to the images in the text or rely on the store to check the site.
-  // However, I will add the image URL for reference as requested.
-  const itemImages = order.items.map((item: any) => `📸 ${item.name}: ${item.image}`).join('\n');
+  const message = `*🌿 NOVO PEDIDO - BOTANIQ*\n\n` +
+    `*DADOS DO CLIENTE*\n` +
+    `👤 *Nome:* ${order.customerName}\n` +
+    `📱 *WhatsApp:* ${order.customerPhone}\n\n` +
+    `*ENDEREÇO DE ENTREGA*\n` +
+    `📍 ${formatAddress(order.address)}\n\n` +
+    `*RESUMO DOS ITENS*\n` +
+    `${itemsText}\n` +
+    `--------------------------\n` +
+    `💰 *Subtotal:* ${formatCurrency(order.cartTotal)}\n` +
+    (order.discount > 0 ? `✨ *Desconto (${order.couponCode}):* -${formatCurrency(order.discount)}\n` : '') +
+    `🚚 *Frete (Correios):* ${formatCurrency(order.shippingCost)}\n` +
+    `⭐ *TOTAL:* ${formatCurrency(order.total)}\n\n` +
+    `_Pedido gerado automaticamente pelo site Botaniq._`;
   
-  const finalMessage = encodeURIComponent(`${message}\n\n*Fotos dos Itens:*\n${itemImages}`);
+  const finalMessage = encodeURIComponent(message);
   return `https://wa.me/${storePhone.replace(/\D/g, '')}?text=${finalMessage}`;
 }
 
