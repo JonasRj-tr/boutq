@@ -20,6 +20,14 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSplash(false);
+    }, 6000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -32,9 +40,75 @@ export default function App() {
   return (
     <Router>
       <div className="min-h-screen flex flex-col font-sans">
+        <AnimatePresence>
+          {showSplash && (
+            <motion.div
+              initial={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              className="fixed inset-0 z-[100] bg-brand-cream flex flex-col items-center justify-center overflow-hidden"
+            >
+              {/* Luxury Background Elements */}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 0.05, scale: 1 }}
+                transition={{ duration: 4, ease: "easeOut" }}
+                className="absolute inset-0 flex items-center justify-center pointer-events-none"
+              >
+                <img src="https://i.postimg.cc/d0pWF3k6/Logo-3.png" alt="" className="w-full h-full object-contain blur-2xl" />
+              </motion.div>
+
+              <div className="relative flex flex-col items-center">
+                {/* Logo Animation */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 2, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
+                >
+                  <img src="https://i.postimg.cc/d0pWF3k6/Logo-3.png" alt="Botaniq" className="h-40 w-auto object-contain" />
+                </motion.div>
+
+                {/* Handwritten Text Animation */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 2.5, ease: "easeInOut", delay: 2.5 }}
+                  className="mt-8"
+                >
+                  <span className="font-handwriting text-5xl md:text-6xl text-brand-green/80 italic">
+                    Feito com amor, para você
+                  </span>
+                </motion.div>
+
+                {/* Subtle Progress Line */}
+                <motion.div 
+                  initial={{ width: 0 }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 5, ease: "linear", delay: 0.5 }}
+                  className="absolute -bottom-16 h-[1px] bg-brand-green/10"
+                />
+              </div>
+
+              {/* Minimalist Accents */}
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 2 }}
+                className="absolute top-12 left-12 w-24 h-[1px] bg-brand-green/5"
+              />
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4, duration: 2 }}
+                className="absolute bottom-12 right-12 w-24 h-[1px] bg-brand-green/5"
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         {/* Navigation */}
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-white/50 backdrop-blur-md border-b border-brand-green/10">
-          <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-brand-green/10 shadow-sm">
+          <div className="max-w-7xl mx-auto px-4 h-24 flex items-center justify-between">
             <div className="flex items-center gap-4">
               <button onClick={() => setIsMenuOpen(true)} className="p-2 hover:bg-brand-green/5 transition-colors">
                 <Menu size={24} />
@@ -42,7 +116,7 @@ export default function App() {
             </div>
 
             <Link to="/" className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center">
-              <img src="https://i.postimg.cc/d0pWF3k6/Logo-3.png" alt="Botaniq Logo" className="h-28 w-auto object-contain" />
+              <img src="https://i.postimg.cc/d0pWF3k6/Logo-3.png" alt="Botaniq Logo" className="h-20 w-auto object-contain" />
             </Link>
 
             <div className="flex items-center gap-4">
@@ -108,7 +182,7 @@ export default function App() {
         </AnimatePresence>
 
         {/* Content */}
-        <main className="flex-grow pt-20">
+        <main className="flex-grow pt-24">
           <Routes>
             <Route path="/" element={<Home cart={cart} setCart={setCart} isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />} />
             <Route path="/admin" element={<Admin />} />

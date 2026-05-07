@@ -230,7 +230,7 @@ export default function Home({ cart, setCart, isCartOpen, setIsCartOpen }: HomeP
             <span className="text-[10px] uppercase tracking-[0.6em] mb-8 block opacity-40 font-medium">Handcrafted Botanical Goods</span>
             <h1 className="text-7xl md:text-8xl mb-8 leading-[0.9] text-brand-green">
               A Essência <br />
-              <span className="italic font-normal pl-12 md:pl-20 uppercase tracking-tighter">da BotaniQ</span>
+              <span className="italic font-normal pl-12 md:pl-20 uppercase tracking-tighter">BotaniQ</span>
             </h1>
             <p className="text-sm opacity-70 mb-12 max-w-md leading-relaxed font-sans">
               Saboaria artesanal e óleos de banho em barra. Um ritual de luxo e delicadeza para a sua pele, formulado com ingredientes 100% naturais.
@@ -525,7 +525,7 @@ export default function Home({ cart, setCart, isCartOpen, setIsCartOpen }: HomeP
               <div className="relative">
                 <div className="aspect-[4/5] overflow-hidden rounded-sm shadow-2xl relative z-10">
                   <img 
-                    src="https://images.unsplash.com/photo-1600857062241-98e5dba7f214?auto=format&fit=crop&q=80&w=1000" 
+                    src="https://i.postimg.cc/RZKZ5SSg/Whats-App-Image-2026-05-06-at-22-21-03.jpg" 
                     className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-1000"
                     alt="Sabonete Artesanal Terapêutico"
                   />
@@ -632,141 +632,6 @@ export default function Home({ cart, setCart, isCartOpen, setIsCartOpen }: HomeP
         </div>
       </section>
 
-      {/* Men's Health Section */}
-      <section id="saude-masculina" className="py-32 bg-[#0a1a15] text-white overflow-hidden relative">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500/20 via-brand-green to-emerald-500/20"></div>
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-20 items-center mb-32">
-            <div>
-              <span className="text-[10px] uppercase tracking-[0.6em] text-emerald-400 mb-6 block font-bold">Botaniq Health</span>
-              <h2 className="text-5xl md:text-7xl font-serif mb-8 leading-[1.1]">
-                Saúde Masculina <br />
-                <span className="italic font-normal text-emerald-100/80">Moderna e Descomplicada</span>
-              </h2>
-              <p className="text-emerald-100/60 text-lg leading-relaxed mb-10 max-w-xl">
-                Uma plataforma digital criada para oferecer tratamentos modernos, seguros e personalizados, tudo de forma prática, discreta e totalmente online.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <a 
-                  href={`https://wa.me/${storeSettings.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent('Olá! Gostaria de saber mais sobre os tratamentos de saúde masculina.')}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-emerald-500 hover:bg-emerald-400 text-white px-10 py-5 uppercase text-[10px] tracking-[0.3em] transition-all shadow-2xl flex items-center gap-3 rounded-sm group"
-                >
-                  Falar com Especialista <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                </a>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="aspect-square bg-emerald-900/20 border border-emerald-500/10 rounded-full absolute -inset-10 animate-pulse"></div>
-              <div className="relative z-10 aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                <img 
-                  src="https://www.manual.com.br/_next/image?url=https%3A%2F%2Fcdn.manual.co%2Frebrand%2FWEB_BR%2FHomepage%2Fhero-daily-health%402x.jpg&w=1080&q=100" 
-                  className="w-full h-full object-cover opacity-80"
-                  alt="Modern Health Care"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a1a15] via-transparent to-transparent"></div>
-                <div className="absolute bottom-8 left-8 right-8">
-                  <div className="flex items-center gap-4 bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/10">
-                    <div className="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center">
-                      <Shield size={20} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-widest">Discrição Total</p>
-                      <p className="text-[10px] opacity-60">Sua privacidade é nossa prioridade.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-32">
-            {[
-              { icon: <ShieldCheck className="text-emerald-400" />, title: "Especialistas", text: "Tratamentos desenvolvidos por corpo clínico rigoroso." },
-              { icon: <Lock className="text-emerald-400" />, title: "100% Discreto", text: "Processo totalmente online e entrega sigilosa." },
-              { icon: <Zap className="text-emerald-400" />, title: "Entrega Rápida", text: "Receba em casa com agilidade em todo o Brasil." },
-              { icon: <Award className="text-emerald-400" />, title: "Fórmulas Únicas", text: "Manipuladas por farmácias autorizadas de elite." }
-            ].map((item, i) => (
-              <div key={i} className="bg-white/5 border border-white/5 p-8 hover:bg-white/10 transition-colors group">
-                <div className="mb-6 group-hover:scale-110 transition-transform duration-500">{item.icon}</div>
-                <h3 className="text-sm uppercase tracking-widest font-bold mb-4">{item.title}</h3>
-                <p className="text-xs text-white/50 leading-relaxed">{item.text}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mb-32">
-            <div className="text-center mb-20">
-              <h2 className="text-4xl font-serif mb-4">Como Funciona</h2>
-              <div className="w-20 h-1 bg-emerald-500 mx-auto rounded-full"></div>
-            </div>
-            <div className="grid md:grid-cols-3 gap-16 relative">
-              <div className="hidden md:block absolute top-1/2 left-0 w-full h-[1px] bg-white/10 -z-0"></div>
-              {[
-                { step: "01", title: "Avaliação Online", icon: <User />, desc: "Questionário rápido e seguro sobre sua saúde e objetivos." },
-                { step: "02", title: "Tratamento", icon: <Stethoscope />, desc: "Fórmulas preparadas de forma personalizada para seu caso." },
-                { step: "03", title: "Suporte Clínico", icon: <Heart />, desc: "Acompanhamento contínuo durante toda a jornada." }
-              ].map((step, i) => (
-                <div key={i} className="relative z-10 flex flex-col items-center text-center">
-                  <div className="w-20 h-20 rounded-full bg-emerald-500 text-white flex items-center justify-center mb-8 shadow-xl shadow-emerald-500/20">
-                    {step.icon}
-                  </div>
-                  <span className="text-[10px] font-bold text-emerald-400 mb-2">{step.step}</span>
-                  <h3 className="text-xl font-serif mb-4">{step.title}</h3>
-                  <p className="text-xs text-white/50 leading-relaxed max-w-[200px]">{step.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-8">
-            <div className="bg-gradient-to-br from-emerald-950 to-[#0a1a15] p-12 rounded-3xl border border-emerald-500/10 relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full -mr-32 -mt-32 blur-3xl group-hover:bg-emerald-500/10 transition-colors"></div>
-              <h3 className="text-3xl font-serif mb-6">Queda Capilar</h3>
-              <p className="text-sm text-white/60 mb-8 leading-relaxed">
-                Soluções modernas e cientificamente comprovadas para auxiliar no combate à queda de cabelo masculina. Fortalecimento e crescimento saudável.
-              </p>
-              <ul className="space-y-4 mb-10">
-                {['Resultados Reais', 'Acompanhamento Médico', 'Fórmulas Personalizadas'].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-xs text-emerald-400 font-bold uppercase tracking-widest">
-                    <div className="w-1 h-1 bg-emerald-400 rounded-full"></div> {item}
-                  </li>
-                ))}
-              </ul>
-              <a 
-                href={`https://wa.me/${storeSettings.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent('Tenho interesse no tratamento para Queda Capilar.')}`}
-                target="_blank"
-                className="inline-flex items-center gap-3 text-sm border-b border-emerald-500 pb-2 hover:gap-5 transition-all text-emerald-400 font-bold"
-              >
-                Ver Tratamento <ArrowRight size={16} />
-              </a>
-            </div>
-
-            <div className="bg-gradient-to-br from-emerald-900/40 to-[#0a1a15] p-12 rounded-3xl border border-emerald-500/10 relative overflow-hidden group">
-              <h3 className="text-3xl font-serif mb-6">Performance & Bem-Estar</h3>
-              <p className="text-sm text-white/60 mb-8 leading-relaxed">
-                Tratamentos discretos voltados para qualidade de vida masculina. Todo o processo acontece com privacidade total e acompanhamento especializado.
-              </p>
-              <ul className="space-y-4 mb-10">
-                {['Discrição Total', 'Qualidade de Vida', 'Suporte Exclusivo'].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-xs text-emerald-400 font-bold uppercase tracking-widest">
-                    <div className="w-1 h-1 bg-emerald-400 rounded-full"></div> {item}
-                  </li>
-                ))}
-              </ul>
-              <a 
-                href={`https://wa.me/${storeSettings.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent('Quero saber mais sobre os tratamentos de Performance e Bem-Estar.')}`}
-                target="_blank"
-                className="inline-flex items-center gap-3 text-sm border-b border-emerald-500 pb-2 hover:gap-5 transition-all text-emerald-400 font-bold"
-              >
-                Saiba Mais <ArrowRight size={16} />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* About Section */}
       <section id="sobre" className="bg-white py-40 overflow-hidden relative">
         <div className="absolute top-0 left-0 w-full h-[1px] bg-brand-green/5"></div>
@@ -774,7 +639,7 @@ export default function Home({ cart, setCart, isCartOpen, setIsCartOpen }: HomeP
           <div className="relative order-2 lg:order-1">
             <div className="aspect-[4/5] bg-brand-cream relative z-10 w-full max-w-lg shadow-2xl">
               <img 
-                src="https://i.postimg.cc/zvVDmLTH/D-NQ-NP-2X-967843-MLB111276624139-052026-F-kit-farol-sabonetes-artesanais-botaniq-cesto-croch-azul-1.webp" 
+                src="https://i.postimg.cc/fyVMHZq2/Whats-App-Image-2026-05-06-at-22-22-49.jpg" 
                 className="w-full h-full object-cover"
                 alt="Processo Criativo"
               />
