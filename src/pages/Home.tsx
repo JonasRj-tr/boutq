@@ -261,7 +261,7 @@ export default function Home({ cart, setCart, isCartOpen, setIsCartOpen }: HomeP
       {/* Products Grid */}
       <section id="produtos" className="py-32 max-w-7xl mx-auto px-12 bg-brand-cream">
         <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-10">
-          <div className="relative">
+          <div className="relative text-center md:text-left flex flex-col items-center md:items-start w-full md:w-auto">
             <h2 className="text-6xl mb-6 leading-tight">Escolha o <br/><span className="italic">seu ritual</span></h2>
             <div className="w-20 h-[1px] bg-brand-green/20"></div>
           </div>
@@ -333,7 +333,7 @@ export default function Home({ cart, setCart, isCartOpen, setIsCartOpen }: HomeP
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-[10px] uppercase tracking-[0.5em] text-brand-green/60 mb-4 block">Cuidado Especializado</span>
-            <h2 className="text-4xl md:text-5xl font-serif mb-6">Seu Ritual em 3 Passos</h2>
+            <h2 className="text-4xl md:text-5xl font-serif mb-6 leading-tight">3 passos para seu <br/>sabonete personalizado</h2>
             <p className="text-brand-green/60 max-w-xl mx-auto text-sm leading-relaxed lowercase">
               Inspirado na ciência botânica e no autocuidado consciente, criamos um caminho simplificado para você atingir seus objetivos de bem-estar.
             </p>
@@ -372,15 +372,14 @@ export default function Home({ cart, setCart, isCartOpen, setIsCartOpen }: HomeP
           </div>
 
           <div className="mt-16 text-center">
-            <button 
-              onClick={() => {
-                const el = document.getElementById('ritual-section');
-                el?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="bg-brand-green text-white px-10 py-5 uppercase text-[10px] tracking-[0.3em] hover:bg-brand-green/90 transition-all shadow-xl rounded-full"
+            <a 
+              href={`https://wa.me/${storeSettings.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent('Olá! Gostaria de realizar minha avaliação personalizada para um sabonete terapêutico exclusivo.')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex bg-brand-green text-white px-10 py-5 uppercase text-[10px] tracking-[0.3em] hover:bg-brand-green/90 transition-all shadow-xl rounded-full"
             >
               Começar meu Ritual agora
-            </button>
+            </a>
           </div>
         </div>
       </section>

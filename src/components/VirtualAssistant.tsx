@@ -150,6 +150,20 @@ export const VirtualAssistant = () => {
         <div className="absolute inset-0 bg-brand-terracotta translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out opacity-20"></div>
         {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
       </motion.button>
+
+      {/* Floating Instagram Button */}
+      <motion.a
+        href={socialLinks.instagram}
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ opacity: 0, scale: 0.8, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        className="w-12 h-12 bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white rounded-full shadow-2xl flex items-center justify-center group"
+      >
+        <Instagram size={20} />
+      </motion.a>
     </div>
   );
 };

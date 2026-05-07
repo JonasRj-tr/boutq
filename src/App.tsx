@@ -68,6 +68,18 @@ export default function App() {
                   <img src="https://i.postimg.cc/d0pWF3k6/Logo-3.png" alt="Botaniq" className="h-40 w-auto object-contain" />
                 </motion.div>
 
+                {/* New Handwritten Phrase */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 3, ease: "easeInOut", delay: 1.5 }}
+                  className="mt-8 text-center"
+                >
+                  <p className="font-handwriting text-4xl md:text-5xl text-brand-green/70 italic whitespace-nowrap px-4">
+                    Saboaria que conecta você à terra.
+                  </p>
+                </motion.div>
+
                 {/* Subtle Progress Line */}
                 <motion.div 
                   initial={{ width: 0 }}
