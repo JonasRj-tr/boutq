@@ -61,23 +61,11 @@ export default function App() {
               <div className="relative flex flex-col items-center">
                 {/* Logo Animation */}
                 <motion.div
-                  initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 2, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
                 >
                   <img src="https://i.postimg.cc/d0pWF3k6/Logo-3.png" alt="Botaniq" className="h-40 w-auto object-contain" />
-                </motion.div>
-
-                {/* Handwritten Text Animation */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 2.5, ease: "easeInOut", delay: 2.5 }}
-                  className="mt-8"
-                >
-                  <span className="font-handwriting text-5xl md:text-6xl text-brand-green/80 italic">
-                    Feito com amor, para você
-                  </span>
                 </motion.div>
 
                 {/* Subtle Progress Line */}
